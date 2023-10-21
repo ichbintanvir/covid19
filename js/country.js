@@ -31,7 +31,7 @@ const getData = (data) => {
     data.forEach((ele) => {
         const div = document.createElement('div');
         div.style.width = '18rem';
-        div.classList.add('col-4', 'col-md-6', 'border', 'border-success', 'rounded', 'custom-card', 'p-2', 'bg-secondary-subtle');
+        div.classList.add('col-4', 'col-md-6', 'col-sm-12', 'border', 'border-success', 'rounded', 'custom-card', 'p-2', 'bg-secondary-subtle');
         div.innerHTML = `
         <img src="${ele.countryInfo.flag}" class="card-img-top img-fluid" alt="...">
         <div class="card-body">
