@@ -1,10 +1,45 @@
-const url = 'https://disease.sh/v3/covid-19/countries';
-const aPI = async () => {
+// all country
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('https://disease.sh/v3/covid-19/countries/')
+        .then(response => response.json())
+        .then(data => getData(data))
+    // .catch(error => console.error('Error:', error));
+});
+const userInput = document.getElementById('user-input')
+userInput.addEventListener('keyup', () => {
+    const mainURL = 'https://disease.sh/v3/covid-19/countries/';
+    const userText = userInput.value;
+    const specificURL = `${mainURL}${userText}`;
+    const length = userText.length;
+    console.log(specificURL);
+    if (length > 0) {
+        return aPI2(specificURL);
+    }
+    else {
+        return aPI(mainURL);
+    }
+
+})
+const aPI = async (url) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
         // console.log(data);
         getData(data);
+    }
+    catch (error) {
+        error => console.log(error);
+    }
+}
+const aPI2 = async (url) => {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        // const arr = [];
+        // arr.push(data);
+        // getData(arr);
+        getData([data]);
+        // console.log(data);
     }
     catch (error) {
         error => console.log(error);
@@ -27,6 +62,7 @@ const aPI = async () => {
 // }
 const getData = (data) => {
     const card = document.getElementById('card');
+    card.innerHTML = '';
     card.classList.add('row', 'g-2'); // Add Bootstrap spacing classes
     data.forEach((ele) => {
         const div = document.createElement('div');
