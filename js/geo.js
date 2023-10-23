@@ -23,6 +23,7 @@ function drawRegionsMap(data) {
         const arr2 = [country, death];
         arr.push(arr2);
     });
+    // console.log(arr);
 
     var data2 = google.visualization.arrayToDataTable(arr);
     var options = {
