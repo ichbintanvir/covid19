@@ -31,11 +31,11 @@ function drawChart(data) {
         population.push(populationVALUE);
     })
     const totalTests = add(tests);
-    const totalDeaths = add(deaths);
+    const totalDeaths = add(deaths) * 100;
     const totalRecovered = add(recovered);
     const totalPopulation = add(population);
 
-
+    console.log(typeof totalDeaths)
     const data2 = google.visualization.arrayToDataTable([
         ['Category', 'Value'],
         ['TotalDeaths', totalDeaths],
@@ -49,11 +49,11 @@ function drawChart(data) {
     // Set Options
     const options = {
         title: 'Worldwide COVID-19 Data',
-        is3D: true
+        // is3D: true
     };
 
     // Draw
-    const chart = new google.visualization.PieChart(document.getElementById('myChartDoneat'));
+    const chart = new google.visualization.BarChart(document.getElementById('myChartDoneat'));
     chart.draw(data2, options);
 
 }
